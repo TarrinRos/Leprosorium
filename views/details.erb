@@ -5,3 +5,16 @@
     Added at <%= @row ['created_date'] %>
   <br />
 </p>
+
+<h4>Comments:</h4>
+
+<form action="/details/<%= @row ['id'] %>" method="POST" role="form">
+
+<div class="form-group">
+  <label for="exampleFormControlTextarea1">add comment</label>
+  <textarea name="content" class="form-control" id="exampleFormControlTextarea1" placeholder="Enter your smart text" rows="6"></textarea>
+</div>
+
+<button type="submit" class="btn btn-primary">Add comment</button>
+
+</form>
