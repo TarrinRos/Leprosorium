@@ -1,4 +1,10 @@
 <h2>Latest posts:</h2>
+
+  <% @results.each do |row| %>
 <p>
-  <%= @results %>
+  <%= row ['content'] %>
+<br />
+  <%= row ['created_date'] %>
 </p>
+<hr />
+  <% end %>
