@@ -14,6 +14,15 @@ before do
   init_db
 end
 
+configure do
+  init_db
+  @db.execute 'create table if not exists Posts (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              created_date DATE,
+              content TEXT
+  )'
+end
+
 get '/' do
   erb 'Hello!
   <a href="https://github.com/bootstrap-ruby/sinatra-bootstrap">Original</a>
@@ -27,5 +36,9 @@ end
 
 post '/new' do
   @content = params[:content]
+  if @content.length < 1
+    @error = 'Type your text please'
+    return erb :new
+  end
   erb "You typed #{@content}"
 end
