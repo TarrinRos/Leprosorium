@@ -48,9 +48,16 @@ end
 
 # Returns posts by Id
 get '/details/:post_id' do
+  # get variables from url
   post_id = params[:post_id]
-
+  # get only one post from db
   results = @db.execute 'select * from Posts where id =?', [post_id]
   @row = results[0]
   erb :details
+end
+
+post '/details/:post_id' do
+  post_id = params[:post_id]
+  @content = params[:content]
+  erb "You typed comment #{@content} with #{post_id}"
 end
