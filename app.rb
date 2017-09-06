@@ -59,6 +59,9 @@ get '/details/:post_id' do
   # get only one post from db
   results = @db.execute 'select * from Posts where id =?', [post_id]
   @row = results[0]
+  # choosing comments for post
+  @comments = @db.execute 'select * from Comments where post_id =? order by
+   created_date', [post_id]
   erb :details
 end
 
