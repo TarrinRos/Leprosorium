@@ -61,7 +61,7 @@ get '/details/:post_id' do
   @row = results[0]
   # choosing comments for post
   @comments = @db.execute 'select * from Comments where post_id =? order by
-   created_date', [post_id]
+   created_date desc', [post_id]
   erb :details
 end
 
